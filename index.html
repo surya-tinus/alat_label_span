@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Alat Label Span v3 | U-Tapis Elipsis dan Petik</title>
+<title>Alat Label Span v5 | U-Tapis Elipsis dan Petik</title>
 <style>
 :root{--bg:#f6f6f3;--panel:#ffffff;--ink:#1c1c1a;--mut:#66665f;--line:#dcdcd5;--acc:#2456c9;--ok:#1e7a46;--bad:#b3261e;--warn:#8a5d00;--mark:#ffe08a;--fs:19px}
 @media (prefers-color-scheme:dark){:root{--bg:#161614;--panel:#20201d;--ink:#ecece6;--mut:#a3a39b;--line:#3a3a35;--acc:#8aa9ff;--ok:#5ccf8c;--bad:#ff8a80;--warn:#e6b84d;--mark:#6b5a12}}
@@ -13,35 +13,37 @@ header{position:sticky;top:0;z-index:5;background:var(--panel);border-bottom:1px
 .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .grow{flex:1}
 main{max-width:1000px;margin:0 auto;padding:16px}
-button,.btn,select,input[type=number]{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:7px 12px;cursor:pointer}
+button,.btn,select{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:7px 12px;cursor:pointer}
 button:hover,.btn:hover{border-color:var(--acc)}
 button:focus-visible,.btn:focus-within,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--acc);outline-offset:1px}
 .btn input{position:absolute;opacity:0;width:1px;height:1px}
 .primary{background:var(--acc);color:#fff;border-color:var(--acc)}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;margin-top:14px}
 .chip{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:1px 10px;font-size:13px;color:var(--mut);margin-right:6px}
-.chip.rule{color:var(--ink);font-weight:600;border-color:var(--acc)}
-.chips button{padding:2px 10px;border-radius:999px;font-size:13px;margin:2px 4px 2px 0}
-.chips button.on{border-color:var(--acc);background:var(--acc);color:#fff}
+.chip.split-uji{background:var(--warn);color:#fff;border-color:var(--warn);font-weight:600}
+.chip.ragu{border-color:var(--warn);color:var(--warn);font-weight:600}
 .meta{color:var(--mut);font-size:13px;margin-bottom:8px}
-.isu{background:var(--bg);border-left:3px solid var(--warn);padding:8px 12px;border-radius:6px;margin:10px 0;font-size:14px}
-.isu small{color:var(--mut)}
 #para{font-size:var(--fs);line-height:1.65;white-space:pre-wrap;word-wrap:break-word;padding:14px 16px;border:1px solid var(--line);border-radius:10px;max-height:46vh;overflow:auto}
 mark{background:var(--mark);color:inherit;padding:1px 3px;border-radius:4px;outline:2px solid var(--warn);outline-offset:0;font-weight:600}
 details{margin-top:10px}
 summary{cursor:pointer;color:var(--mut)}
 .ctx{white-space:pre-wrap;font-size:15px;color:var(--mut);padding:8px 12px;border-left:3px solid var(--line);margin:6px 0}
-.labels{display:flex;gap:10px;margin:14px 0 8px}
-.labels button{flex:1;padding:12px 8px;font-size:16px;font-weight:600}
-.labels button[aria-pressed=true].l1{background:var(--ok);color:#fff;border-color:var(--ok)}
-.labels button[aria-pressed=true].l0{background:var(--bad);color:#fff;border-color:var(--bad)}
-.labels button[aria-pressed=true].lq{background:var(--warn);color:#fff;border-color:var(--warn)}
-.labels kbd,.help kbd{font:12px ui-monospace,monospace;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:0 5px;background:var(--bg);color:var(--ink)}
-.fields{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end}
+.usul{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;background:var(--bg);border-left:3px solid var(--acc);padding:10px 14px;border-radius:6px;margin:12px 0;font-size:15px}
+.usul dt{color:var(--mut)}
+.usul dd{margin:0}
+.usul .baru{font-weight:700}
+.labels{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 8px}
+.labels button{flex:1;min-width:110px;padding:11px 6px;font-size:15px;font-weight:600}
+.labels button[aria-pressed=true]{background:var(--acc);color:#fff;border-color:var(--acc)}
+.labels button[aria-pressed=true].l-ya{background:var(--ok);border-color:var(--ok)}
+.labels button[aria-pressed=true].l-tidak{background:var(--bad);border-color:var(--bad)}
+.labels button[aria-pressed=true].l-ragu{background:var(--warn);border-color:var(--warn)}
+kbd{font:12px ui-monospace,monospace;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:0 5px;background:var(--bg);color:var(--ink)}
+.fields{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;align-items:end}
 .fields label{display:flex;flex-direction:column;gap:3px;font-size:13px;color:var(--mut)}
 .fields .full{grid-column:1/-1}
-.fields select,.fields input[type=text],textarea{width:100%;font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:7px 10px}
-.check{flex-direction:row!important;align-items:center;gap:8px!important;color:var(--ink)!important;font-size:15px!important}
+.fields select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:7px 10px}
+.perlu{outline:2px solid var(--bad)}
 .nav{display:flex;gap:10px;margin-top:14px;align-items:center;flex-wrap:wrap}
 .bar{height:8px;background:var(--line);border-radius:6px;overflow:hidden;min-width:140px}
 .bar i{display:block;height:100%;background:var(--ok);width:0}
@@ -50,16 +52,11 @@ summary{cursor:pointer;color:var(--mut)}
 .mut{color:var(--mut)}
 .help{font-size:14px;color:var(--mut)}
 .help li{margin:3px 0}
-[hidden]{display:none!important}
-@media (max-width:640px){.fields{grid-template-columns:1fr}.labels{flex-direction:column}}
-
-.chip.split-uji{background:var(--warn);color:#fff;border-color:var(--warn);font-weight:600}
-.labels.l5 button{padding:12px 6px;font-size:15px}
-.labels button[aria-pressed=true].ls{background:var(--acc);color:#fff;border-color:var(--acc)}
-.guess{background:var(--bg);border-left:3px solid var(--acc);padding:6px 12px;border-radius:6px;margin:10px 0;font-size:14px}
-.counts{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;font-size:13px;color:var(--mut)}
+.counts{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;font-size:13px;color:var(--mut)}
 .counts b{color:var(--ink)}
 header input[type=text]{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 10px}
+[hidden]{display:none!important}
+@media (max-width:640px){.fields{grid-template-columns:1fr}.usul{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -69,8 +66,8 @@ header input[type=text]{font:inherit;color:var(--ink);background:var(--panel);bo
     <span id="fname" class="mut">Belum ada file</span>
     <label class="mut">Anotator <input type="text" id="anotator" placeholder="nama atau kode" size="14" autocomplete="off"></label>
     <span class="grow"></span>
-    <button id="btnA-" title="Perkecil teks" aria-label="Perkecil teks">A−</button>
-    <button id="btnA+" title="Perbesar teks" aria-label="Perbesar teks">A+</button>
+    <button id="btnAkecil" title="Perkecil teks" aria-label="Perkecil teks">A−</button>
+    <button id="btnAbesar" title="Perbesar teks" aria-label="Perbesar teks">A+</button>
     <button id="btnExport" class="primary" disabled>Unduh CSV</button>
   </div>
   <div class="row" style="margin-top:8px" id="bar" hidden>
@@ -78,21 +75,20 @@ header input[type=text]{font:inherit;color:var(--ink);background:var(--panel);bo
     <span id="prog"></span>
     <span class="grow"></span>
     <label><span id="kelName">Kelompok</span> <select id="fKel"></select></label>
-    <label><input type="checkbox" id="fTodo"> Hanya yang belum dilabeli</label>
-    <label id="guessWrap"><input type="checkbox" id="fGuess"> Tampilkan tebakan skrip <kbd style="font:12px ui-monospace,monospace">b</kbd></label>
+    <label><input type="checkbox" id="fTodo"> Hanya yang belum selesai</label>
   </div>
   <div class="counts" id="counts"></div>
 </header>
 
 <main>
   <section id="intro" class="card">
-    <h2 style="margin-top:0" id="hTitle">Alat label U-Tapis: petik dan elipsis</h2>
-    <p>Klik <b>Buka CSV</b>. Alat ini mengenali dua file dan menyesuaikan tampilannya sendiri:</p>
+    <h2 style="margin-top:0" id="hTitle">Alat label U-Tapis v5 (codebook v2.4)</h2>
+    <p>Klik <b>Buka CSV</b>. Alat mengenali jenis berkas sendiri:</p>
     <ul class="help">
-      <li>Berkas dengan kolom <code>span_id</code> (mis. <code>kerja_putaran1.csv</code>): melabeli span berpetik (UCAPAN, KARYA, ISTILAH, LAIN). Isi kolom <b>Anotator</b> (nama atau kode) lebih dulu; nama itu ikut tertulis di CSV keluaran.</li>
-      <li><code>kerja_cek_dilewati.csv</code>: mengecek paragraf yang dilewati skrip (berlanjut, salah ketik, penutup hilang, terpotong).</li>
-      <li>Berkas dibaca di browser dan <b>tidak dikirim ke mana pun</b>. Progres tersimpan otomatis di browser ini dan terikat pada alamat halaman ini, jadi buka selalu dari alamat yang sama. Tetap <b>Unduh CSV</b> secara berkala (alat mengingatkan tiap 50 label).</li>
-      <li>Pintasan keyboard: angka pada tombol memberi label, <kbd>←</kbd> <kbd>→</kbd> pindah baris, <kbd>u</kbd> ke baris belum dilabeli berikutnya, <kbd>n</kbd> menulis catatan.</li>
+      <li><b>Tinjau relabel</b> (mis. <code>cek_label_v13_alat.csv</code>): baca paragraf, lihat label lama dan usulan baru beserta alasannya, lalu tekan <b>Setuju</b> <kbd>1</kbd>, <b>Tidak setuju</b> <kbd>2</kbd>, atau <b>Ragu</b> <kbd>?</kbd>. Bila tidak setuju, pilih label yang benar di bawahnya.</li>
+      <li><b>Label span</b> (berkas kerja dengan kolom <code>span_id</code>, <code>teks_paragraf</code>, <code>mulai</code>, <code>akhir</code>): beri satu dari 9 label codebook v2.0 <kbd>1</kbd>–<kbd>9</kbd> menurut <b>jenis</b> frasa, lalu subjenisnya. <b>Perlakuan EYD</b> (petik dua, petik tunggal, miring, tidak wajib) muncul otomatis dari subjenis. ARTI_KHUSUS juga butuh <code>dikenal_umum</code>.</li>
+      <li>Berkas dibaca di browser dan <b>tidak dikirim ke mana pun</b>. Progres tersimpan otomatis di browser ini; tetap klik <b>Unduh CSV</b> setelah selesai.</li>
+      <li>Pintasan: <kbd>←</kbd> <kbd>→</kbd> pindah baris, <kbd>u</kbd> ke baris belum selesai berikutnya, <kbd>n</kbd> menulis catatan.</li>
     </ul>
   </section>
 
@@ -100,29 +96,35 @@ header input[type=text]{font:inherit;color:var(--ink);background:var(--panel);bo
   <div id="empty2" class="card" hidden>Tidak ada baris yang cocok dengan filter ini.</div>
 
   <section id="card" class="card" hidden>
-    <div class="meta"><span class="chip" id="cSplit"></span><span class="chip" id="cSumber"></span><span id="cBerkas"></span> · paragraf ke-<span id="cPar"></span></div>
+    <div class="meta"><span class="chip" id="cSplit"></span><span class="chip" id="cKelas"></span><span class="chip ragu" id="cRagu" hidden>usulan ragu</span><span id="cBerkas"></span></div>
     <div id="pos" class="mut" style="font-size:13px"></div>
-    <div id="uji" class="warn" hidden>Span ini ada di split <b id="ujiNama">uji</b>. Labelnya hanya untuk evaluasi akhir: jangan dipakai mengubah rule atau fitur.</div>
-    <div class="guess" id="guess" hidden></div>
+    <div id="uji" class="warn" hidden>Span ini ada di split <b id="ujiNama">uji</b>: labelnya menjadi kunci jawaban penilaian, jadi baca dengan teliti.</div>
     <div id="para" tabindex="0" aria-label="Teks paragraf"></div>
     <details id="dBefore" hidden><summary>Paragraf sebelumnya</summary><div class="ctx" id="tBefore"></div></details>
     <details id="dAfter" hidden><summary>Paragraf sesudahnya</summary><div class="ctx" id="tAfter"></div></details>
-    <details id="dGuide"><summary>Pedoman label</summary><div class="ctx" id="tGuide"></div></details>
+    <dl class="usul" id="usul" hidden>
+      <dt>Label lama (v1.2)</dt><dd id="uLama"></dd>
+      <dt>Usulan baru (v1.3/v1.4)</dt><dd id="uBaru" class="baru"></dd>
+      <dt>Alasan</dt><dd id="uDasar"></dd>
+    </dl>
+    <details id="dGuide"><summary>Pedoman codebook v2.4</summary><div class="ctx" id="tGuide"></div></details>
 
-    <div class="labels l5" id="labels"></div>
+    <div class="labels" id="labels"></div>
 
     <div class="fields">
-      <label id="batasWrap">Sub-label (judul/tema untuk KARYA; kasus batas untuk LAIN)
-        <select id="batas"></select></label>
+      <label id="lblWrap">Label yang benar (v2.0)<select id="fLabel"></select></label>
+      <label id="subWrap">Subjenis<select id="fSub"></select></label>
+      <label id="duWrap">dikenal_umum (khusus ARTI_KHUSUS)<select id="fDu"></select></label>
+      <div id="perlWrap" class="full" hidden>Perlakuan EYD (otomatis): <b id="perl"></b></div>
       <label class="full">Catatan
-        <textarea id="catatan" rows="2" placeholder="Opsional. Tulis alasan bila ragu atau kasusnya tidak tercakup pedoman."></textarea></label>
+        <textarea id="catatan" rows="2" placeholder="Opsional. Tulis alasan bila tidak setuju atau ragu."></textarea></label>
     </div>
 
     <div class="nav">
       <button id="prev">← Sebelumnya</button>
       <button id="next">Berikutnya →</button>
-      <button id="nextTodo">Belum dilabeli berikutnya <kbd style="font:12px ui-monospace,monospace">u</kbd></button>
-      <label><input type="checkbox" id="auto" checked> Lanjut otomatis setelah memberi label</label>
+      <button id="nextTodo">Belum selesai berikutnya <kbd>u</kbd></button>
+      <label><input type="checkbox" id="auto" checked> Lanjut otomatis sesudah Setuju / memberi label</label>
       <span class="grow"></span>
       <span id="saved" class="mut" style="font-size:13px"></span>
     </div>
@@ -130,7 +132,7 @@ header input[type=text]{font:inherit;color:var(--ink);background:var(--panel);bo
 </main>
 
 <script id="core">
-/* ---------- fungsi murni ---------- */
+/* ---------- fungsi murni (sama dengan v3) ---------- */
 function parseCSV(text){
   if (text.charCodeAt(0) === 0xFEFF) text = text.slice(1);
   const rows = []; let row = [], f = '', q = false, i = 0; const n = text.length;
@@ -159,7 +161,7 @@ function findSpan(row){
   const isi = Array.from(row.isi || ''); const head = isi.slice(0, 8).join('');
   let s = parseInt(row.mulai, 10), e = parseInt(row.akhir, 10);
   if (!isNaN(s) && !isNaN(e) && s >= 0 && e > s && e <= cps.length && head && cps.slice(s, e).join('').indexOf(head) >= 0) return { start: s, end: e };
-  if (head) {                       /* fallback: cari isi di teks */
+  if (head) {
     const idx = text.indexOf(isi.join(''));
     if (idx >= 0) { const st = Array.from(text.slice(0, idx)).length; s = Math.max(0, st - 1); e = Math.min(cps.length, st + isi.length + 1); return { start: s, end: e }; }
   }
@@ -168,142 +170,177 @@ function findSpan(row){
 </script>
 
 <script>
-/* ---------- aplikasi ---------- */
-const $ = id => document.getElementById(id);
-const PEDOMAN_SPAN = 'Label menurut FUNGSI frasa di kalimatnya (codebook v1.1, 26 Okt 2026). Urutan: 1) petikan langsung orang = UCAPAN; 2) judul karya, atau tema/subtema = KARYA (sub-label: judul atau tema); 3) nama program, nama media, nama diri (nama_orang, nama_organisasi, nama_tempat), produk, slogan = LAIN; 4) istilah asing atau daerah yang belum diserap, istilah medis/ilmiah = LAIN (wilayah huruf miring); 5) julukan atau kiasan = ISTILAH hanya bila penulis memperkenalkannya atau menandai arti khusus di kalimat itu (kata seperti dijuluki atau disebut hanya petunjuk, bukan penentu); bila sudah lazim = LAIN (julukan_lazim / kiasan_lazim). Contoh: Kawasan itu dijuluki "Kampung Udang" oleh warga setempat = ISTILAH; Cirebon dikenal sebagai Kota Udang = LAIN (julukan_lazim); 6) frasa umum yang dipetik hanya untuk penekanan = LAIN (penekanan_kata_umum).\n\nIsi Sub-label (tombol d) untuk KARYA dan LAIN. Jabatan: LAIN, sub lainnya, tulis jabatan di catatan. Ragu: tekan ?, tulis alasan di catatan.\n\nLabel buta: jangan menebak label dari prediksi model atau label lama.';
-const PEDOMAN_DILEWATI = 'Semua tanda petik di paragraf disorot. Lihat juga paragraf sebelumnya dan sesudahnya.\n\nBerlanjut: kutipan dibuka di paragraf ini dan memang ditutup di paragraf berikutnya, ATAU paragraf ini menutup kutipan yang dibuka di paragraf sebelumnya. Catatan dikosongkan.\n\nSalah ketik: petik pembuka atau penutup salah jenis atau salah posisi di beritanya (mis. petik tunggal sebagai pembuka).\n\nPenutup hilang: kutipan dibuka tetapi tidak pernah ditutup dalam paragraf sesudahnya.\n\nTerpotong: teks paragraf terpotong atau rusak akibat ekstraksi.\n\nLain: tidak masuk empat di atas (mis. petik dua bersarang). Jelaskan di catatan.';
-const BATAS = ['', 'judul', 'tema', 'nama_program_acara', 'nama_orang', 'nama_organisasi', 'nama_tempat', 'nama_produk_layanan', 'istilah_asing_atau_ilmiah', 'slogan_motto', 'julukan_lazim', 'kiasan_lazim', 'penekanan_kata_umum', 'kutipan_bukan_ucapan', 'lainnya'];
+/* ---------- codebook v2.0: label = jenis frasa; perlakuan EYD dihitung dari subjenis.
+   SKEMA disalin otomatis dari data/label_v2/skema_v2.json (scripts/peta_label_v2.py). ---------- */
+const SKEMA = {"PETIKAN": {"ucapan": "petik_dua", "kutipan_naskah": "petik_dua", "tulisan_fisik": "petik_dua", "tulisan_digital": "petik_dua"}, "KARYA": {"lagu": "petik_dua", "puisi": "petik_dua", "artikel": "petik_dua", "naskah": "petik_dua", "bab_buku": "petik_dua", "pidato_ceramah": "petik_dua", "video": "petik_dua", "episode_siniar": "petik_dua", "laporan_riset": "petik_dua", "dokumen": "petik_dua", "buku": "miring", "film": "miring", "album": "miring", "acara_tv": "miring", "siniar": "miring", "lakon_teater": "miring", "game": "tidak_wajib", "seni_rupa": "tidak_wajib", "karya_lain": "tidak_wajib"}, "TEMA": {"tema": "petik_dua", "subtema": "petik_dua"}, "ACARA": {"kegiatan": "tidak_wajib", "konser_tur": "tidak_wajib", "festival_lomba": "tidak_wajib", "pameran": "tidak_wajib", "program_gerakan": "tidak_wajib", "penghargaan": "tidak_wajib"}, "NAMA": {"orang": "tidak_wajib", "tokoh_fiksi": "tidak_wajib", "organisasi": "tidak_wajib", "tempat": "tidak_wajib", "produk": "tidak_wajib", "hari_raya": "tidak_wajib", "peristiwa": "tidak_wajib", "media_massa": "miring"}, "ARTI_KHUSUS": {"julukan": null, "kiasan": null, "ejekan_sindiran": null, "istilah_baru": null, "istilah_ilmiah": null}, "ASING": {"kata_asing": "miring", "kata_daerah": "miring"}, "MAKNA": {"padanan_kata": "petik_tunggal", "terjemahan": "petik_tunggal"}, "LAIN": {"penekanan": "tidak_wajib", "slogan_motto": "tidak_wajib", "jabatan": "tidak_wajib", "angka": "tidak_wajib", "lainnya": "tidak_wajib"}};
+const SUB = Object.fromEntries(Object.entries(SKEMA).map(([k, v]) => [k, Object.keys(v)]));
+const LABEL13 = Object.keys(SUB);
+const NAMA_PERL = { petik_dua: 'petik dua (wajib)', petik_tunggal: 'petik tunggal', miring: 'huruf miring, bukan petik', tidak_wajib: 'tidak wajib petik', ragu: 'ragu' };
+function perlakuanOf(label, sub, du){
+  if (label === 'ARTI_KHUSUS') return du === 'tidak' ? 'petik_dua' : du === 'ya' ? 'tidak_wajib' : (du ? 'ragu' : '');
+  const v = SKEMA[label] || {};
+  if (sub) return v[sub] || '';
+  const u = [...new Set(Object.values(v))];   /* semua subjenis sama perlakuannya */
+  return u.length === 1 && u[0] ? u[0] : '';
+}
+const PEDOMAN = 'Codebook v2.4 (19 Nov 2026). Label = JENIS frasa; subjenis = jenis rinci; perlakuan EYD dihitung otomatis.\n' +
+  '1. Kata-kata seseorang atau isi tulisan yang dikutip apa adanya (ucapan, naskah, spanduk, unggahan) = PETIKAN.\n' +
+  '2. Judul karya = KARYA, pilih jenisnya: lagu, puisi, artikel (berita, opini, liputan, makalah), naskah, bab buku, pidato/ceramah, video, episode siniar, laporan/riset, dokumen (perlakuan: petik dua); buku, film, album, acara TV, siniar, lakon/teater (miring); game, seni rupa, karya lain (tidak wajib).\n' +
+  '3. Tema atau subtema acara = TEMA (petik dua).\n' +
+  '4. Nama acara, kegiatan, konser/tur, festival/lomba, pameran, program/gerakan, penghargaan = ACARA.\n' +
+  '5. Nama diri: orang, tokoh fiksi, organisasi/band, tempat, produk, hari raya, peristiwa tertentu (perang, bencana bernama), media massa = NAMA. Jenis fenomena yang bisa terjadi berulang (turbulensi udara jernih, sabuk asteroid) bukan NAMA, tetapi ARTI_KHUSUS istilah ilmiah. Julukan orang, juga yang berbahasa asing, = NAMA orang (huruf kapital butir 2). Nama yang dibicarakan sebagai istilah atau diberi arti lain = ARTI_KHUSUS.\n' +
+  '6. Kata/ungkapan asing atau daerah yang belum diserap = ASING (miring), juga bila dijelaskan penulis. Julukan asing untuk tempat atau kelompok = ARTI_KHUSUS; julukan orang = NAMA.\n' +
+  '7. Julukan tempat/kelompok/benda, kiasan, ejekan/sindiran, istilah baru, istilah ilmiah = ARTI_KHUSUS. dikenal_umum: istilah khusus atau julukan yang belum lazim = tidak (petik dua); ungkapan lazim, julukan populer, istilah bentukan dalam makna biasa = ya; tidak yakin = ragu. Kiasan dan sindiran: hapus petiknya; bila arti harfiahnya juga masuk akal di kalimat itu = tidak (mis. "amplop" = suap), bila hanya arti kiasannya yang masuk akal = ya. Julukan tidak otomatis wajib petik.\n' +
+  '8. Makna, padanan, atau terjemahan kata/kalimat (dengan atau tanpa berarti/artinya) = MAKNA (petik tunggal).\n' +
+  '9. Penekanan kata umum, slogan/motto, jabatan, angka, lainnya = LAIN.\n\n' +
+  'Alat bantu dikenal_umum (6.2): julukan yang muncul di 5 artikel berita atau lebih = ya, 4 atau kurang = tidak. Istilah: artinya bisa ditebak dari kata penyusunnya = ya; bila tidak, sangat jarang di berita = tidak, sangat sering (100 artikel atau lebih) = ya, selain itu nilai sendiri. KBBI hanya pendukung. Istilah yang sudah dipetik lebih dulu di teks yang sama: kemunculan berikutnya bukan target, tulis sudah dipetik sebelumnya di catatan (6.11).\n' +
+  'Kata isyarat yang bukan sebutan (6.10): ganti disebut/dikenal sebagai dengan dianggap, dikatakan, atau terkenal sebagai. Arti tetap sama = penilaian biasa = LAIN lainnya (sering disebut sebagai pemimpin yang buruk). Pola disebut X sebagai Y: X = pihak yang menyebut, label menurut jenisnya.\n' +
+  'Tema atau nama acara: kata tema/bertema/mengusung tema tepat sebelum frasa = TEMA. Bertajuk pada seminar, lokakarya, diskusi, sarasehan, webinar = TEMA. Bertajuk pada konser, festival, lomba, tur, CSR, fun run, pameran = ACARA. Bertajuk pada tulisan, laporan, riset, video, dokumen = KARYA.\n' +
+  'Judul di dalam petikan langsung: tetap KARYA/TEMA; tanda yang benar petik tunggal (tanda petik tunggal butir 1), tulis di catatan.\n' +
+  'PETIKAN atau ARTI_KHUSUS: pernyataan/penilaian yang dikutip = PETIKAN; sebutan atau nama yang diberikan = ARTI_KHUSUS.\n' +
+  'NAMA atau judul lagu: ganti frasa dengan "band itu" (masuk akal = NAMA) atau "lagu itu" (masuk akal = KARYA lagu).';
+const PEDOMAN_DILEWATI = 'Semua tanda petik di paragraf disorot. Lihat juga paragraf sebelumnya dan sesudahnya.\n\nBerlanjut: kutipan dibuka di paragraf ini dan ditutup di paragraf berikutnya, atau paragraf ini menutup kutipan dari paragraf sebelumnya.\nSalah ketik: petik salah jenis atau salah posisi.\nPenutup hilang: kutipan dibuka tetapi tidak pernah ditutup.\nTerpotong: teks rusak akibat ekstraksi.\nLain: jelaskan di catatan.';
+
 const MODES = {
+  tinjau: {
+    title: 'Tinjau relabel (label pengganti codebook v2.4)', idCol: 'span_id', groupCol: 'kelas_model', groupName: 'Kelas model',
+    need: ['span_id', 'usulan_v13', 'setuju'], labelCol: 'setuju',
+    cols: { label: 'label_surya', sub: 'sub_surya', du: 'dikenal_umum_surya', note: 'catatan_surya', perl: 'perlakuan_surya' },
+    opts: [['ya', 'Setuju', '1', 'l-ya'], ['tidak', 'Tidak setuju', '2', 'l-tidak'], ['ragu', 'Ragu', '?', 'l-ragu']],
+    anotator: false, hl: 'span', pedoman: PEDOMAN
+  },
   span: {
-    labelCol: 'label_manual', idCol: 'span_id', groupCol: 'kelompok', groupName: 'Kelompok',
-    need: ['span_id', 'isi', 'teks_paragraf', 'mulai', 'akhir'], extra: ['kasus_batas', 'catatan', 'anotator'],
-    opts: [['UCAPAN', 'UCAPAN', '1'], ['KARYA', 'KARYA', '2'], ['ISTILAH', 'ISTILAH', '3'], ['LAIN', 'LAIN', '4'], ['?', 'Ragu', '/']],
-    title: 'Alat label span berpetik', batas: true, guess: true, hl: 'span', pedoman: PEDOMAN_SPAN, after: 'Paragraf sesudahnya'
+    title: 'Label span berpetik (codebook v2.4)', idCol: 'span_id', groupCol: 'kelompok', groupName: 'Kelompok',
+    need: ['span_id', 'isi', 'teks_paragraf', 'mulai', 'akhir'], labelCol: 'label_v2',
+    cols: { sub: 'sub_v2', du: 'dikenal_umum', note: 'catatan', perl: 'perlakuan' },
+    opts: LABEL13.map((l, i) => [l, l, String(i + 1), '']).concat([['Ragu', 'Ragu', '?', 'l-ragu']]),
+    anotator: true, hl: 'span', pedoman: PEDOMAN
   },
   dilewati: {
-    labelCol: 'hasil_cek', idCol: 'id', groupCol: 'alasan', groupName: 'Alasan dilewati',
-    need: ['id', 'alasan', 'teks_paragraf'], extra: ['catatan'],
-    opts: [['berlanjut', 'Berlanjut', '1'], ['salah_ketik_petik_buka', 'Salah ketik', '2'], ['penutup_hilang', 'Penutup hilang', '3'], ['terpotong', 'Terpotong', '4'], ['lain', 'Lain', '5']],
-    title: 'Cek paragraf yang dilewati', batas: false, guess: false, hl: 'quotes', pedoman: PEDOMAN_DILEWATI, after: 'Paragraf sesudahnya (cek apakah petiknya ditutup)'
+    title: 'Cek paragraf yang dilewati', idCol: 'id', groupCol: 'alasan', groupName: 'Alasan dilewati',
+    need: ['id', 'alasan', 'teks_paragraf'], labelCol: 'hasil_cek', cols: { note: 'catatan' },
+    opts: [['berlanjut', 'Berlanjut', '1', ''], ['salah_ketik_petik_buka', 'Salah ketik', '2', ''], ['penutup_hilang', 'Penutup hilang', '3', ''], ['terpotong', 'Terpotong', '4', ''], ['lain', 'Lain', '5', '']],
+    anotator: false, hl: 'quotes', pedoman: PEDOMAN_DILEWATI
   }
 };
-let MODE = MODES.span, KEYMAP = {};
-const BUTA = /buta/.test(location.search + location.hash);   /* tambahkan ?buta atau #buta ke alamat: sembunyikan tebakan dan filter kelompok */
-let GUESS_AVAIL = false, sinceExport = 0;
-const REMIND_EVERY = 50;
-const guessOn = () => MODE.guess && GUESS_AVAIL;
-const anotatorName = () => $('anotator').value.trim();
-let header = [], rows = [], order = [], cur = 0, fileName = '', dirty = false, saveTimer = null;
 
+/* ---------- aplikasi ---------- */
+const $ = id => document.getElementById(id);
+let MODE = MODES.span, KEYMAP = {}, header = [], rows = [], order = [], cur = 0, fileName = '', dirty = false, saveTimer = null, sinceExport = 0;
+const REMIND_EVERY = 50;
+const anotatorName = () => $('anotator').value.trim();
 const keyOf = r => r[MODE.idCol];
 const labelOf = r => (r[MODE.labelCol] || '').trim();
-const isLabeled = r => MODE.opts.some(o => o[0] === labelOf(r));
 const curRow = () => order.length ? rows[order[cur]] : null;
+/* Label yang menentukan subjenis: di mode tinjau = label pengganti; di mode span = label v2.0. */
+const labelFor = r => MODE === MODES.tinjau ? (r[MODE.cols.label] || '') : labelOf(r);
+function isDone(r){
+  const v = labelOf(r);
+  if (!MODE.opts.some(o => o[0] === v)) return false;
+  const lengkap = l => (l !== 'ARTI_KHUSUS' || !!r[MODE.cols.du]) && (l !== 'KARYA' || !!r[MODE.cols.sub]);
+  if (MODE === MODES.tinjau && v === 'tidak') return LABEL13.indexOf(r[MODE.cols.label] || '') >= 0 && lengkap(r[MODE.cols.label]);
+  if (MODE === MODES.span) return lengkap(v);
+  return true;
+}
 
+function fillSelect(sel, values, cur, emptyText){
+  sel.textContent = '';
+  [''].concat(values).forEach(v => { const o = document.createElement('option'); o.value = v; o.textContent = v || emptyText; sel.append(o); });
+  if (cur && values.indexOf(cur) < 0) { const o = document.createElement('option'); o.value = cur; o.textContent = cur; sel.append(o); }
+  sel.value = cur || '';
+}
 function applyMode(){
   KEYMAP = {};
-  MODE.opts.forEach(o => { if (o[2] === '/') { KEYMAP['/'] = o[0]; KEYMAP['?'] = o[0]; } else KEYMAP[o[2]] = o[0]; });
+  MODE.opts.forEach(o => { if (o[2] === '?') { KEYMAP['?'] = o[0]; KEYMAP['/'] = o[0]; } else KEYMAP[o[2]] = o[0]; });
   $('hTitle').textContent = MODE.title; document.title = MODE.title + ' | U-Tapis Elipsis dan Petik';
   $('kelName').textContent = MODE.groupName;
-  $('batasWrap').hidden = !MODE.batas; $('guessWrap').hidden = !guessOn();
-  if (!guessOn()) $('fGuess').checked = false;
-  $('fKel').parentElement.hidden = BUTA;
+  $('anotator').parentElement.hidden = !MODE.anotator;
   const box = $('labels'); box.textContent = '';
   MODE.opts.forEach(o => {
     const b = document.createElement('button');
-    b.dataset.v = o[0]; b.className = (o[0] === '?' ? 'lq' : 'ls'); b.setAttribute('aria-pressed', 'false');
-    b.textContent = o[1] + ' '; const k = document.createElement('kbd'); k.textContent = (o[2] === '/' ? '?' : o[2]); b.append(k);
+    b.dataset.v = o[0]; b.className = o[3]; b.setAttribute('aria-pressed', 'false');
+    b.textContent = o[1] + ' '; const k = document.createElement('kbd'); k.textContent = o[2]; b.append(k);
     b.onclick = () => setLabel(o[0]); box.append(b);
   });
-  $('dAfter').querySelector('summary').textContent = MODE.after;
 }
 
 /* ----- muat berkas ----- */
 $('fileInput').addEventListener('change', async e => {
   const f = e.target.files[0]; if (!f) return;
-  const text = await f.text();
-  loadText(text, f.name);
+  loadText(await f.text(), f.name);
   e.target.value = '';
 });
 function showWarn(msg, key){ const w = $('warn'); w.textContent = msg; w.hidden = !msg; w.dataset.k = msg ? (key || '') : ''; }
 function detectMode(hdr){
+  if (hdr.indexOf('usulan_v13') >= 0 && hdr.indexOf('setuju') >= 0) return 'tinjau';
   if (hdr.indexOf('span_id') >= 0) return 'span';
   if (hdr.indexOf('alasan') >= 0 && hdr.indexOf('teks_paragraf') >= 0) return 'dilewati';
   return null;
 }
 function loadText(text, name){
-  const mojibake = /\uFFFD/.test(text) || /â€[œ\u009d\u009c\u0098\u2122\u201c\u201d]/.test(text);
+  const mojibake = /�/.test(text) || /â€[œ\u009d\u009c\u0098™“”]/.test(text);
   const table = parseCSV(text);
   if (table.length < 2) { showWarn('Berkas kosong atau bukan CSV yang valid.'); return; }
   const mode = detectMode(table[0]);
-  if (!mode) { showWarn('Format CSV tidak dikenali. Gunakan berkas kerja yang punya kolom span_id (mis. kerja_putaran1.csv) atau kerja_cek_dilewati.csv.'); return; }
+  if (!mode) { showWarn('Format CSV tidak dikenali. Gunakan berkas tinjau (kolom usulan_v13 dan setuju), berkas kerja span (kolom span_id), atau kerja_cek_dilewati.csv.'); return; }
   const M = MODES[mode];
   const miss = M.need.filter(c => table[0].indexOf(c) < 0);
   if (miss.length) { showWarn('Kolom wajib tidak ada: ' + miss.join(', ') + '.'); return; }
-  GUESS_AVAIL = !BUTA && (table[0].indexOf('jenis_awal') >= 0 || table[0].indexOf('isyarat') >= 0);
-  sinceExport = 0;
-  MODE = M; applyMode();
+  MODE = M; applyMode(); sinceExport = 0;
   header = table[0].slice();
-  [M.labelCol].concat(M.extra).forEach(c => { if (header.indexOf(c) < 0) header.push(c); });
-  rows = table.slice(1).filter(r => r.some(x => x !== '')).map(r => {
-    const o = {}; header.forEach((h, i) => o[h] = (r[i] == null ? '' : r[i])); return o;
-  });
+  [M.labelCol].concat(Object.values(M.cols), M.anotator ? ['anotator'] : []).forEach(c => { if (header.indexOf(c) < 0) header.push(c); });
+  rows = table.slice(1).filter(r => r.some(x => x !== '')).map(r => { const o = {}; header.forEach((h, i) => o[h] = (r[i] == null ? '' : r[i])); return o; });
   fileName = name; dirty = false;
-  showWarn(mojibake ? 'Terdeteksi karakter rusak (mojibake). Berkas mungkin tidak tersimpan sebagai UTF-8; tanda petik bisa tampil salah. Simpan ulang sebagai CSV UTF-8 sebelum melabeli.' : '', 'mojibake');
+  showWarn(mojibake ? 'Terdeteksi karakter rusak (mojibake). Simpan ulang berkas sebagai CSV UTF-8 sebelum melabeli.' : '', 'mojibake');
   restoreProgress();
   $('fname').textContent = name + ' · ' + rows.length + ' baris';
   $('btnExport').disabled = false; $('bar').hidden = false; $('intro').hidden = true;
-  buildKelFilter(); computeOrder(); cur = firstUnlabeled(); render();
+  buildKelFilter(); computeOrder(); cur = firstTodo(); render();
 }
 
 /* ----- simpan di browser ----- */
-const storeKey = () => 'labelspan:v2:' + fileName + ':' + rows.length;
+const editCols = () => [MODE.labelCol].concat(Object.values(MODE.cols), MODE.anotator ? ['anotator'] : []);
+const storeKey = () => 'labelspan:v5:' + fileName + ':' + rows.length;
 function scheduleSave(){ clearTimeout(saveTimer); saveTimer = setTimeout(saveNow, 250); }
 function saveNow(){
   const o = {};
-  rows.forEach(r => { if (isLabeled(r) || r.kasus_batas || r.catatan) o[keyOf(r)] = { l: r[MODE.labelCol], b: r.kasus_batas || '', c: r.catatan || '', a: r.anotator || '' }; });
+  rows.forEach(r => { const s = {}; let ada = false; editCols().forEach(c => { if (r[c]) { s[c] = r[c]; ada = true; } }); if (ada) o[keyOf(r)] = s; });
   try { localStorage.setItem(storeKey(), JSON.stringify(o)); $('saved').textContent = 'Tersimpan di browser ' + new Date().toLocaleTimeString('id-ID'); }
   catch (e) { $('saved').textContent = 'Penyimpanan browser tidak tersedia: gunakan Unduh CSV.'; }
 }
 function restoreProgress(){
   let o = null;
   try { o = JSON.parse(localStorage.getItem(storeKey()) || 'null'); } catch (e) { o = null; }
-  if (!o) return;
-  const n = Object.keys(o).length; if (!n) return;
-  if (!confirm('Ditemukan progres tersimpan di browser untuk berkas ini (' + n + ' baris diubah). Pulihkan?')) return;
-  rows.forEach(r => { const s = o[keyOf(r)]; if (s) { r[MODE.labelCol] = s.l; if (MODE.batas) r.kasus_batas = s.b; r.catatan = s.c; r.anotator = s.a || ''; } });
+  if (!o || !Object.keys(o).length) return;
+  if (!confirm('Ditemukan progres tersimpan di browser untuk berkas ini (' + Object.keys(o).length + ' baris). Pulihkan?')) return;
+  rows.forEach(r => { const s = o[keyOf(r)]; if (s) editCols().forEach(c => { if (s[c] != null) r[c] = s[c]; }); });
   dirty = true;
 }
 
 /* ----- filter dan urutan ----- */
 function buildKelFilter(){
   const sel = $('fKel'); const ks = []; rows.forEach(r => { const k = r[MODE.groupCol] || ''; if (k && ks.indexOf(k) < 0) ks.push(k); });
-  const keep = sel.value; sel.textContent = '';
+  sel.textContent = '';
   const all = document.createElement('option'); all.value = ''; all.textContent = 'Semua'; sel.append(all);
   ks.forEach(k => { const o = document.createElement('option'); o.value = k; o.textContent = k; sel.append(o); });
-  sel.value = ks.indexOf(keep) >= 0 ? keep : '';
+  sel.parentElement.hidden = !ks.length;
 }
 function computeOrder(keepKey){
   const kel = $('fKel').value, todo = $('fTodo').checked;
   order = [];
-  rows.forEach((r, i) => {
-    if (kel && r[MODE.groupCol] !== kel) return;
-    if (todo && isLabeled(r)) return;
-    order.push(i);
-  });
+  rows.forEach((r, i) => { if (kel && r[MODE.groupCol] !== kel) return; if (todo && isDone(r)) return; order.push(i); });
   if (keepKey) { const j = order.findIndex(i => keyOf(rows[i]) === keepKey); cur = j >= 0 ? j : 0; } else cur = 0;
 }
-function firstUnlabeled(){ const j = order.findIndex(i => !isLabeled(rows[i])); return j >= 0 ? j : 0; }
+function firstTodo(){ const j = order.findIndex(i => !isDone(rows[i])); return j >= 0 ? j : 0; }
 ['fKel', 'fTodo'].forEach(id => $(id).addEventListener('change', e => {
   const r = curRow(); computeOrder(r ? keyOf(r) : null); render();
   if (e.target.tagName === 'SELECT') e.target.blur();
 }));
-$('fGuess').addEventListener('change', () => render());
 
 /* ----- tampilan ----- */
 function updateProgress(){
-  const done = rows.filter(isLabeled).length, total = rows.length;
-  $('prog').textContent = done + ' dari ' + total + ' dilabeli' + (order.length !== total ? ' · ' + order.length + ' baris dalam tampilan' : '');
+  const done = rows.filter(isDone).length, total = rows.length;
+  $('prog').textContent = done + ' dari ' + total + ' selesai' + (order.length !== total ? ' · ' + order.length + ' baris dalam tampilan' : '');
   $('barfill').style.width = total ? (100 * done / total) + '%' : '0';
   const c = {}; MODE.opts.forEach(o => c[o[0]] = 0); rows.forEach(r => { const v = labelOf(r); if (c[v] != null) c[v]++; });
   const box = $('counts'); box.textContent = '';
@@ -312,8 +349,16 @@ function updateProgress(){
 function renderPara(row){
   const box = $('para'); box.textContent = '';
   const text = row.teks_paragraf || '';
+  if (!text && row.kalimat) {                     /* tanpa paragraf: sorot «...» di kolom kalimat */
+    const m = /«([^»]*)»/.exec(row.kalimat);
+    if (!m) { box.textContent = row.kalimat; return; }
+    box.append(document.createTextNode(row.kalimat.slice(0, m.index)));
+    const mk = document.createElement('mark'); mk.textContent = m[1]; box.append(mk);
+    box.append(document.createTextNode(row.kalimat.slice(m.index + m[0].length)));
+    return;
+  }
   if (MODE.hl === 'quotes') {
-    const re = /["\u201c\u201d'\u2018\u2019]/g; let last = 0, m;
+    const re = /["“”'‘’]/g; let last = 0, m;
     while ((m = re.exec(text))) {
       box.append(document.createTextNode(text.slice(last, m.index)));
       const mk = document.createElement('mark'); mk.textContent = m[0]; box.append(mk); last = m.index + 1;
@@ -328,6 +373,24 @@ function renderPara(row){
   box.append(document.createTextNode(cps.slice(h.end).join('')));
   if (mk.scrollIntoView) mk.scrollIntoView({ block: 'center', inline: 'nearest' });
 }
+function renderFields(r){
+  const C = MODE.cols, v = labelOf(r);
+  const showLabel = MODE === MODES.tinjau && v === 'tidak';
+  $('lblWrap').hidden = !showLabel;
+  if (showLabel) { fillSelect($('fLabel'), LABEL13, r[C.label], '(pilih label)'); $('fLabel').classList.toggle('perlu', !r[C.label]); }
+  const lab = labelFor(r);
+  const showSub = !!C.sub && (MODE === MODES.span ? !!SUB[lab] : showLabel);
+  $('subWrap').hidden = !showSub;
+  if (showSub) fillSelect($('fSub'), SUB[lab] || [], r[C.sub], '(subjenis)');
+  const showDu = !!C.du && lab === 'ARTI_KHUSUS' && (MODE === MODES.span || showLabel);
+  $('duWrap').hidden = !showDu;
+  if (showDu) { fillSelect($('fDu'), ['ya', 'tidak', 'ragu'], r[C.du], '(pilih)'); $('fDu').classList.toggle('perlu', !r[C.du]); }
+  const p = perlakuanOf(lab, r[C.sub], r[C.du]);
+  $('perlWrap').hidden = !(C.perl && SUB[lab] && (MODE === MODES.span || showLabel));
+  $('perl').textContent = p ? NAMA_PERL[p] : '(pilih subjenis' + (lab === 'ARTI_KHUSUS' ? ' dan dikenal_umum)' : ')');
+  $('catatan').value = r[C.note] || '';
+}
+function setPerl(r){ if (MODE.cols.perl) r[MODE.cols.perl] = perlakuanOf(labelFor(r), r[MODE.cols.sub], r[MODE.cols.du]); }
 function render(){
   updateProgress();
   if (!rows.length) return;
@@ -335,64 +398,65 @@ function render(){
   $('empty2').hidden = !!r; $('card').hidden = !r;
   if (!r) return;
   cur = Math.min(Math.max(cur, 0), order.length - 1);
-  $('pos').textContent = 'Baris ' + (cur + 1) + ' dari ' + order.length + ' dalam tampilan';
-  const cs = $('cSplit'), sp = r.split || '';
-  if (MODE === MODES.dilewati) { cs.textContent = 'alasan: ' + (r.alasan || ''); cs.className = 'chip'; cs.hidden = !r.alasan; $('uji').hidden = true; }
-  else { const isUji = sp.indexOf('uji') === 0; cs.textContent = sp ? 'split: ' + sp : ''; cs.className = 'chip' + (isUji ? ' split-uji' : ''); cs.hidden = !sp; $('uji').hidden = !isUji; $('ujiNama').textContent = sp; }
-  $('cSumber').textContent = r.sumber || ''; $('cBerkas').textContent = r.berkas || ''; $('cPar').textContent = r.paragraf_ke || '';
-  const g = $('guess');
-  if (guessOn() && $('fGuess').checked) { g.hidden = false; g.textContent = 'Tebakan skrip: ' + (r.jenis_awal || '-') + (r.isyarat ? ' (isyarat: ' + r.isyarat + ')' : '') + (r.kelompok ? ' · kelompok: ' + r.kelompok : ''); }
-  else g.hidden = true;
+  $('pos').textContent = 'Baris ' + (cur + 1) + ' dari ' + order.length + ' dalam tampilan' + (r.no ? ' · no. ' + r.no : '');
+  const sp = r.split || '', isUji = sp.indexOf('uji') === 0 || sp === 'validasi';
+  $('cSplit').textContent = MODE === MODES.dilewati ? 'alasan: ' + (r.alasan || '') : (sp ? 'split: ' + sp : '');
+  $('cSplit').className = 'chip' + (isUji && MODE !== MODES.dilewati ? ' split-uji' : ''); $('cSplit').hidden = !$('cSplit').textContent;
+  $('uji').hidden = !(isUji && MODE !== MODES.dilewati); $('ujiNama').textContent = sp;
+  $('cKelas').textContent = r.kelas_model ? 'kelas model: ' + r.kelas_model : ''; $('cKelas').hidden = !r.kelas_model;
+  $('cRagu').hidden = r.ragu !== 'ya';
+  $('cBerkas').textContent = r.berkas || '';
   renderPara(r);
   [['dBefore', 'tBefore', 'paragraf_sebelum'], ['dAfter', 'tAfter', 'paragraf_sesudah']].forEach(([d, t, c]) => {
-    const has = (r[c] || '') !== ''; $(d).hidden = !has; $(t).textContent = r[c] || '';
+    $(d).hidden = !(r[c] || ''); $(t).textContent = r[c] || '';
   });
-  $('dAfter').open = MODE === MODES.dilewati; $('dBefore').open = MODE === MODES.dilewati;
+  $('usul').hidden = MODE !== MODES.tinjau;
+  if (MODE === MODES.tinjau) { $('uLama').textContent = r.label_v12 || '-'; $('uBaru').textContent = r.usulan_v13 || '-'; $('uDasar').textContent = r.dasar || '-'; }
   $('tGuide').textContent = MODE.pedoman;
   const v = labelOf(r);
   document.querySelectorAll('.labels button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === v));
-  if (MODE.batas) {
-    const bs = $('batas'); if (!bs.options.length) BATAS.forEach(j => { const o = document.createElement('option'); o.value = j; o.textContent = j || '(kosong)'; bs.append(o); });
-    if (r.kasus_batas && BATAS.indexOf(r.kasus_batas) < 0) { const o = document.createElement('option'); o.value = r.kasus_batas; o.textContent = r.kasus_batas; bs.append(o); }
-    bs.value = r.kasus_batas || '';
-  }
-  $('catatan').value = r.catatan || '';
+  renderFields(r);
 }
 
 /* ----- aksi ----- */
 function touch(){ dirty = true; scheduleSave(); updateProgress(); }
 function setLabel(v){
   const r = curRow(); if (!r) return;
-  if (MODE.extra.indexOf('anotator') >= 0 && !anotatorName()) {
-    showWarn('Isi nama atau kode anotator di bagian atas dulu, lalu beri label.', 'nama'); $('anotator').focus(); return;
-  }
-  const off = (labelOf(r) === v);
-  r[MODE.labelCol] = off ? '' : v; r.anotator = off ? '' : anotatorName(); touch();
-  if (!off && ++sinceExport % REMIND_EVERY === 0 && $('warn').dataset.k !== 'mojibake') {
-    showWarn(sinceExport + ' label sejak unduhan terakhir. Klik Unduh CSV agar progres aman.', 'ekspor');
-  }
-  if (r[MODE.labelCol] && $('auto').checked && cur < order.length - 1) cur++;
+  if (MODE.anotator && !anotatorName()) { showWarn('Isi nama atau kode anotator di bagian atas dulu, lalu beri label.', 'nama'); $('anotator').focus(); return; }
+  const off = labelOf(r) === v;
+  r[MODE.labelCol] = off ? '' : v;
+  if (MODE.anotator) r.anotator = off ? '' : anotatorName();
+  if (MODE === MODES.tinjau && r.setuju !== 'tidak') { r[MODE.cols.label] = ''; r[MODE.cols.sub] = ''; r[MODE.cols.du] = ''; }
+  if (MODE === MODES.span && off) { r[MODE.cols.sub] = ''; r[MODE.cols.du] = ''; }
+  if (MODE === MODES.span && !off && SUB[v] && SUB[v].indexOf(r[MODE.cols.sub]) < 0) r[MODE.cols.sub] = '';
+  if (MODE === MODES.span && !off && v !== 'ARTI_KHUSUS') r[MODE.cols.du] = '';
+  setPerl(r);
+  touch();
+  if (!off && ++sinceExport % REMIND_EVERY === 0 && $('warn').dataset.k !== 'mojibake') showWarn(sinceExport + ' label sejak unduhan terakhir. Klik Unduh CSV agar progres aman.', 'ekspor');
+  if (!off && isDone(r) && $('auto').checked && cur < order.length - 1) cur++;    /* "tidak setuju" menunggu label pengganti */
   render();
+  if (!off && !isDone(r)) (MODE === MODES.tinjau && v === 'tidak' ? $('fLabel') : (v === 'KARYA' && !r[MODE.cols.sub] ? $('fSub') : $('fDu'))).focus();
 }
 function go(d){ if (!order.length) return; cur = Math.min(Math.max(cur + d, 0), order.length - 1); render(); }
 function nextTodo(){
   if (!order.length) return;
-  for (let k = 1; k <= order.length; k++) { const j = (cur + k) % order.length; if (!isLabeled(rows[order[j]])) { cur = j; render(); return; } }
-  $('saved').textContent = 'Semua baris dalam tampilan ini sudah dilabeli.';
+  for (let k = 1; k <= order.length; k++) { const j = (cur + k) % order.length; if (!isDone(rows[order[j]])) { cur = j; render(); return; } }
+  $('saved').textContent = 'Semua baris dalam tampilan ini sudah selesai.';
 }
 $('prev').onclick = () => go(-1); $('next').onclick = () => go(1); $('nextTodo').onclick = nextTodo;
-$('batas').onchange = e => { const r = curRow(); if (r) { r.kasus_batas = e.target.value; touch(); } e.target.blur(); };
-$('catatan').oninput = e => { const r = curRow(); if (r) { r.catatan = e.target.value; touch(); } };
-$('btnA+').onclick = () => { const s = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--fs'), 10) || 19; document.documentElement.style.setProperty('--fs', Math.min(34, s + 2) + 'px'); };
-$('btnA-').onclick = () => { const s = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--fs'), 10) || 19; document.documentElement.style.setProperty('--fs', Math.max(13, s - 2) + 'px'); };
+$('fLabel').onchange = e => { const r = curRow(); if (!r) return; r[MODE.cols.label] = e.target.value; r[MODE.cols.sub] = ''; r[MODE.cols.du] = ''; setPerl(r); touch(); render(); };
+$('fSub').onchange = e => { const r = curRow(); if (!r) return; r[MODE.cols.sub] = e.target.value; setPerl(r); touch(); render(); };
+$('fDu').onchange = e => { const r = curRow(); if (!r) return; r[MODE.cols.du] = e.target.value; setPerl(r); touch(); render(); };
+$('catatan').oninput = e => { const r = curRow(); if (r) { r[MODE.cols.note] = e.target.value; touch(); } };
+$('btnAbesar').onclick = () => { const s = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--fs'), 10) || 19; document.documentElement.style.setProperty('--fs', Math.min(34, s + 2) + 'px'); };
+$('btnAkecil').onclick = () => { const s = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--fs'), 10) || 19; document.documentElement.style.setProperty('--fs', Math.max(13, s - 2) + 'px'); };
 $('btnExport').onclick = () => {
-  const kosong = rows.filter(r => !isLabeled(r)).length;
-  if (kosong && !confirm('Masih ada ' + kosong + ' baris yang belum dilabeli (dari ' + rows.length + '). Tetap unduh CSV?')) return;
-  const nama = anotatorName();
-  if (!nama && MODE.extra.indexOf('anotator') >= 0 && !confirm('Kolom Anotator masih kosong, jadi hasil tidak bisa diatribusikan. Tetap unduh CSV?')) return;
+  const kosong = rows.filter(r => !isDone(r)).length;
+  if (kosong && !confirm('Masih ada ' + kosong + ' baris yang belum selesai (dari ' + rows.length + '). Tetap unduh CSV?')) return;
+  const nama = MODE.anotator ? anotatorName() : 'Surya';
   const slug = nama.normalize('NFKD').replace(/[^\w-]+/g, '_').replace(/^_+|_+$/g, '').slice(0, 20);
   const base = fileName.replace(/\.csv$/i, '').replace(/_berlabel(_[^_]+)?$/i, '');
-  const blob = new Blob(['\uFEFF' + toCSV(header, rows)], { type: 'text/csv;charset=utf-8' });
+  const blob = new Blob(['﻿' + toCSV(header, rows)], { type: 'text/csv;charset=utf-8' });
   const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
   a.download = base + '_berlabel' + (slug ? '_' + slug : '') + '.csv';
   document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
@@ -401,14 +465,12 @@ $('btnExport').onclick = () => {
 };
 document.addEventListener('keydown', e => {
   const t = e.target.tagName, ty = e.target.type;
-  if (t === 'TEXTAREA' || t === 'SELECT' || (t === 'INPUT' && (ty === 'text' || ty === 'number'))) { if (e.key === 'Escape') { e.target.blur(); } return; }
+  if (t === 'TEXTAREA' || t === 'SELECT' || (t === 'INPUT' && ty === 'text')) { if (e.key === 'Escape') e.target.blur(); return; }
   if (e.ctrlKey || e.metaKey || e.altKey || !rows.length) return;
   if (KEYMAP[e.key]) { e.preventDefault(); setLabel(KEYMAP[e.key]); }
   else if (e.key === 'ArrowRight') { e.preventDefault(); go(1); }
   else if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
   else if (e.key === 'u' || e.key === 'U') nextTodo();
-  else if ((e.key === 'b' || e.key === 'B') && guessOn()) { $('fGuess').click(); }
-  else if ((e.key === 'd' || e.key === 'D') && MODE.batas) { e.preventDefault(); $('batas').focus(); }
   else if (e.key === 'n' || e.key === 'N') { e.preventDefault(); $('catatan').focus(); }
 });
 window.addEventListener('beforeunload', e => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
