@@ -82,7 +82,7 @@ header input[type=text]{font:inherit;color:var(--ink);background:var(--panel);bo
 
 <main>
   <section id="intro" class="card">
-    <h2 style="margin-top:0" id="hTitle">Alat label U-Tapis v5 (codebook v2.4)</h2>
+    <h2 style="margin-top:0" id="hTitle">Alat label U-Tapis v5 (codebook v2.5)</h2>
     <p>Klik <b>Buka CSV</b>. Alat mengenali jenis berkas sendiri:</p>
     <ul class="help">
       <li><b>Tinjau relabel</b> (mis. <code>cek_label_v13_alat.csv</code>): baca paragraf, lihat label lama dan usulan baru beserta alasannya, lalu tekan <b>Setuju</b> <kbd>1</kbd>, <b>Tidak setuju</b> <kbd>2</kbd>, atau <b>Ragu</b> <kbd>?</kbd>. Bila tidak setuju, pilih label yang benar di bawahnya.</li>
@@ -107,7 +107,7 @@ header input[type=text]{font:inherit;color:var(--ink);background:var(--panel);bo
       <dt>Usulan baru (v1.3/v1.4)</dt><dd id="uBaru" class="baru"></dd>
       <dt>Alasan</dt><dd id="uDasar"></dd>
     </dl>
-    <details id="dGuide"><summary>Pedoman codebook v2.4</summary><div class="ctx" id="tGuide"></div></details>
+    <details id="dGuide"><summary>Pedoman codebook v2.5</summary><div class="ctx" id="tGuide"></div></details>
 
     <div class="labels" id="labels"></div>
 
@@ -183,7 +183,7 @@ function perlakuanOf(label, sub, du){
   const u = [...new Set(Object.values(v))];   /* semua subjenis sama perlakuannya */
   return u.length === 1 && u[0] ? u[0] : '';
 }
-const PEDOMAN = 'Codebook v2.4 (19 Nov 2026). Label = JENIS frasa; subjenis = jenis rinci; perlakuan EYD dihitung otomatis.\n' +
+const PEDOMAN = 'Codebook v2.5 (20 Nov 2026). Label = JENIS frasa; subjenis = jenis rinci; perlakuan EYD dihitung otomatis.\n' +
   '1. Kata-kata seseorang atau isi tulisan yang dikutip apa adanya (ucapan, naskah, spanduk, unggahan) = PETIKAN.\n' +
   '2. Judul karya = KARYA, pilih jenisnya: lagu, puisi, artikel (berita, opini, liputan, makalah), naskah, bab buku, pidato/ceramah, video, episode siniar, laporan/riset, dokumen (perlakuan: petik dua); buku, film, album, acara TV, siniar, lakon/teater (miring); game, seni rupa, karya lain (tidak wajib).\n' +
   '3. Tema atau subtema acara = TEMA (petik dua).\n' +
@@ -193,7 +193,7 @@ const PEDOMAN = 'Codebook v2.4 (19 Nov 2026). Label = JENIS frasa; subjenis = je
   '7. Julukan tempat/kelompok/benda, kiasan, ejekan/sindiran, istilah baru, istilah ilmiah = ARTI_KHUSUS. dikenal_umum: istilah khusus atau julukan yang belum lazim = tidak (petik dua); ungkapan lazim, julukan populer, istilah bentukan dalam makna biasa = ya; tidak yakin = ragu. Kiasan dan sindiran: hapus petiknya; bila arti harfiahnya juga masuk akal di kalimat itu = tidak (mis. "amplop" = suap), bila hanya arti kiasannya yang masuk akal = ya. Julukan tidak otomatis wajib petik.\n' +
   '8. Makna, padanan, atau terjemahan kata/kalimat (dengan atau tanpa berarti/artinya) = MAKNA (petik tunggal).\n' +
   '9. Penekanan kata umum, slogan/motto, jabatan, angka, lainnya = LAIN.\n\n' +
-  'Alat bantu dikenal_umum (6.2): julukan yang muncul di 5 artikel berita atau lebih = ya, 4 atau kurang = tidak. Istilah: artinya bisa ditebak dari kata penyusunnya = ya; bila tidak, sangat jarang di berita = tidak, sangat sering (100 artikel atau lebih) = ya, selain itu nilai sendiri. KBBI hanya pendukung. Istilah yang sudah dipetik lebih dulu di teks yang sama: kemunculan berikutnya bukan target, tulis sudah dipetik sebelumnya di catatan (6.11).\n' +
+  'Alat bantu dikenal_umum (6.2): julukan yang muncul di 5 artikel berita atau lebih = ya, 4 atau kurang = tidak. Istilah: artinya bisa ditebak dari kata penyusunnya dan bukan istilah teknis suatu bidang = ya (kemudahan menebak hanya petunjuk awal: turbulensi udara jernih, penyakit Belanda = tidak); bila tidak, sangat jarang di berita = tidak, sangat sering (100 artikel atau lebih) = ya, selain itu nilai sendiri. Konteks menentukan (ibu kota politik deskriptif = ya, sebagai julukan khusus = tidak). Penjelasan di kalimat tidak membuat istilah dikenal umum. KBBI hanya pendukung. Istilah yang sudah dipetik lebih dulu di artikel yang sama dengan pengertian yang sama: kemunculan berikutnya bukan target, tulis sudah dipetik sebelumnya di catatan (6.11).\n' +
   'Kata isyarat yang bukan sebutan (6.10): ganti disebut/dikenal sebagai dengan dianggap, dikatakan, atau terkenal sebagai. Arti tetap sama = penilaian biasa = LAIN lainnya (sering disebut sebagai pemimpin yang buruk). Pola disebut X sebagai Y: X = pihak yang menyebut, label menurut jenisnya.\n' +
   'Tema atau nama acara: kata tema/bertema/mengusung tema tepat sebelum frasa = TEMA. Bertajuk pada seminar, lokakarya, diskusi, sarasehan, webinar = TEMA. Bertajuk pada konser, festival, lomba, tur, CSR, fun run, pameran = ACARA. Bertajuk pada tulisan, laporan, riset, video, dokumen = KARYA.\n' +
   'Judul di dalam petikan langsung: tetap KARYA/TEMA; tanda yang benar petik tunggal (tanda petik tunggal butir 1), tulis di catatan.\n' +
@@ -203,14 +203,14 @@ const PEDOMAN_DILEWATI = 'Semua tanda petik di paragraf disorot. Lihat juga para
 
 const MODES = {
   tinjau: {
-    title: 'Tinjau relabel (label pengganti codebook v2.4)', idCol: 'span_id', groupCol: 'kelas_model', groupName: 'Kelas model',
+    title: 'Tinjau relabel (label pengganti codebook v2.5)', idCol: 'span_id', groupCol: 'kelas_model', groupName: 'Kelas model',
     need: ['span_id', 'usulan_v13', 'setuju'], labelCol: 'setuju',
     cols: { label: 'label_surya', sub: 'sub_surya', du: 'dikenal_umum_surya', note: 'catatan_surya', perl: 'perlakuan_surya' },
     opts: [['ya', 'Setuju', '1', 'l-ya'], ['tidak', 'Tidak setuju', '2', 'l-tidak'], ['ragu', 'Ragu', '?', 'l-ragu']],
     anotator: false, hl: 'span', pedoman: PEDOMAN
   },
   span: {
-    title: 'Label span berpetik (codebook v2.4)', idCol: 'span_id', groupCol: 'kelompok', groupName: 'Kelompok',
+    title: 'Label span berpetik (codebook v2.5)', idCol: 'span_id', groupCol: 'kelompok', groupName: 'Kelompok',
     need: ['span_id', 'isi', 'teks_paragraf', 'mulai', 'akhir'], labelCol: 'label_v2',
     cols: { sub: 'sub_v2', du: 'dikenal_umum', note: 'catatan', perl: 'perlakuan' },
     opts: LABEL13.map((l, i) => [l, l, String(i + 1), '']).concat([['Ragu', 'Ragu', '?', 'l-ragu']]),
